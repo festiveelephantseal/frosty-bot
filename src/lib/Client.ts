@@ -4,8 +4,11 @@ import { join } from "path";
 import { owners } from "../../config";
 import { BotOptions } from "./interfaces/BotOptions";
 import Logger from "@ayanaware/logger";
+import { PrismaClient } from "@prisma/client";
 
 export default class BotClient extends AkairoClient {
+    public prisma = new PrismaClient();
+
     public logger: Logger = Logger.get("Bot");
     public commandHandler: CommandHandler = new CommandHandler(this, {
         directory: join(__dirname, ".." , "core", "commands"),
