@@ -6,7 +6,8 @@
   "author": "nerdthatnoonelikes <kenrag24@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "start": "tsc && node dist/src/Bot.js"
   },
   "devDependencies": {
     "@types/node": "^14.14.20",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "@ayanaware/logger": "^2.2.1",
+    "axios": "^0.21.1",
     "discord-akairo": "discord-akairo/discord-akairo",
     "discord.js": "discordjs/discord.js"
   }
