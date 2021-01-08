@@ -10,6 +10,7 @@
     "start": "tsc && node dist/src/Bot.js"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.10.3",
     "@types/node": "^14.14.20",
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
@@ -20,6 +21,7 @@
     "@ayanaware/logger": "^2.2.1",
     "axios": "^0.21.1",
     "discord-akairo": "discord-akairo/discord-akairo",
-    "discord.js": "discordjs/discord.js"
+    "discord.js": "discordjs/discord.js",
+    "mongoose": "^5.11.10"
   }
 }
