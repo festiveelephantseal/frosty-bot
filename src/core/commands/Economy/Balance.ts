@@ -20,6 +20,10 @@ export default class BalanceCommand extends Command {
         })
     }
     public async exec(message: Message, { member } : { member: GuildMember}) {
+        if (member.user.bot) {
+            return message.channel.send("Bots can't have money >:(");
+        }
+
         const coins = await getCoins(member.id);
         const { user } = message.guild.members.cache.get(member.id);
 
