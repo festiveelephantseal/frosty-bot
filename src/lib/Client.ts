@@ -14,7 +14,7 @@ export default class BotClient extends AkairoClient {
         handleEdits: true,
         commandUtil: true,
         commandUtilLifetime: 3e5,
-        defaultCooldown: 1000,
+        defaultCooldown: 5000,
         argumentDefaults: {
             prompt: {
                 modifyStart: (_: Message, str: string): string =>`${str}\n\nType \`cancel\` to cancel the command...`,
