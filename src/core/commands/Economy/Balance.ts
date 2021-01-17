@@ -1,5 +1,5 @@
 import { Command } from "discord-akairo";
-import { Message, GuildMember } from "discord.js";
+import { Message, GuildMember, MessageEmbed } from "discord.js";
 import { getCoins } from "../../../lib/utils/GetCoins";
 
 export default class BalanceCommand extends Command {
@@ -19,7 +19,7 @@ export default class BalanceCommand extends Command {
             ]
         })
     }
-    public async exec(message: Message, { member } : { member: GuildMember}): Promise<void> {
+    public async exec(message: Message, { member } : { member: GuildMember}) {
         const coins = await getCoins(member.id);
         const { user } = message.guild.members.cache.get(member.id);
 

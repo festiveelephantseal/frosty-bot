@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import UserSchema from "../schemas/UserSchema";
 
-export const getCoins = async (userID): Promise<number> => {
+export const getCoins = async (userID) => {
     try {
         const result = await UserSchema.findOne({
             userID
