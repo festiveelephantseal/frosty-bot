@@ -9,8 +9,8 @@ export default class CommandCooldown extends Listener {
         });
     }
 
-    public exec(message: Message, remaining: number) {
-        const final = remaining/1000
+    public exec(message: Message, remaining: number): void {
+        const final = remaining / 1000
         message.util.send(`You can use that command in \`${final} seconds\``);
     }
 }
