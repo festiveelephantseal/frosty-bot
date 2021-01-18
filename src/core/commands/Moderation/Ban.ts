@@ -44,7 +44,7 @@ export default class Ban extends Command {
         if (member.id === message.author.id)
             return message.util.send(":x: You can't ban yourself");
 
-        if (member.bannable)
+        if (!member.bannable)
             return message.util.send(":x: This member can't be banned");
 
         if (!clientUser.permissions.has("BAN_MEMBERS"))
