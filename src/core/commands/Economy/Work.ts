@@ -16,7 +16,7 @@ export default class DailyCommand extends Command {
     });
   }
 
-  public async exec(message: Message) {
+  public async exec(message: Message): Promise<void> {
     const amount = Math.floor(Math.random() * (2000 - 10) + 10);
 
     await addCoins(message.author.id, amount);

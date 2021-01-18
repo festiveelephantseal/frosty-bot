@@ -19,14 +19,24 @@ export default class BalanceCommand extends Command {
       ],
     });
   }
-  public async exec(message: Message, { member }: { member: GuildMember }) {
+  public async exec(
+    message: Message,
+    { member }: { member: GuildMember }
+  ): Promise<Message> {
     if (member.user.bot) {
       return message.channel.send("Bots can't have money >:(");
     } else {
       const coins = await getCoins(member.id);
       const { user } = message.guild.members.cache.get(member.id);
 
-      message.reply(`${user.username} has ${coins} coins`);
+      const embed: MessageEmbed = new MessageEmbed()
+        .setAuthor(
+          `${user.username}'s balance`,
+          user.displayAvatarURL({ dynamic: true })
+        )
+        .setDescription(`🏦: $**${coins}**`);
+
+      message.util.send(embed);
     }
   }
 }
