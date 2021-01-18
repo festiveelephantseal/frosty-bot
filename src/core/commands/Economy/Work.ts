@@ -7,6 +7,7 @@ export default class DailyCommand extends Command {
     public constructor() {
         super("daily", {
             aliases: ["work", "w"],
+            category: "Economy",
             description: {
                 content: "get some money",
             },
@@ -15,15 +16,15 @@ export default class DailyCommand extends Command {
         });
     }
 
-    public exec(message: Message) {
-        const amount = Math.random() * (2000 - 10) + 10;
+    public async exec(message: Message) {
+        const amount = Math.floor(Math.random() * (2000 - 10) + 10);
 
-        addCoins(message.author.id, amount);
+        await addCoins(message.author.id, amount);
 
         const embed: MessageEmbed = new MessageEmbed()
             .setColor("BLUE")
             .setDescription(
-                `You worked for ${amount/10} hours and earnt **$${amount}**`
+                `You worked for ${Math.floor(amount / 12)} hours and earnt **$${amount}**`
             )
 
         message.channel.send(embed);

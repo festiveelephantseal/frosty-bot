@@ -6,7 +6,7 @@ export default class BalanceCommand extends Command {
     public constructor() {
         super("balance", {
             aliases: ["balance", "bal", "coins"],
-            category: "Econnomy",
+            category: "Economy",
             description: {
                 content: "See how much coins you or another user have",
             },
@@ -14,13 +14,13 @@ export default class BalanceCommand extends Command {
                 {
                     id: "member",
                     type: "member",
-                    default: (msg: Message) => msg.author,
+                    default: (msg: Message) => msg.member,
                 },
             ],
         });
     }
     public async exec(message: Message, { member }: { member: GuildMember }) {
-        if (member.user.bot) {
+       if (member.user.bot) {
             return message.channel.send("Bots can't have money >:(");
         } else {
             const coins = await getCoins(member.id);

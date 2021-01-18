@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import UserSchema from "../schemas/UserSchema";
 
 export const getCoins = async (userID) => {
-    try {
         const result = await UserSchema.findOne({
             userID
         })
@@ -19,7 +18,4 @@ export const getCoins = async (userID) => {
         }
         return coins;
 
-    } finally {
-        mongoose.connection.close()
-    }
 }
