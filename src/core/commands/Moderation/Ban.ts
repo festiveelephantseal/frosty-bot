@@ -22,8 +22,9 @@ export default class Ban extends Command {
                 },
                 {
                     id: "reason",
-                    match: "flag",
-                    flag: "--reason",
+                    match: "option",
+                    flag: "reason:",
+                    default: "No reason provided"
                 },
             ],
             clientPermissions: ["BAN_MEMBERS"],
@@ -34,7 +35,7 @@ export default class Ban extends Command {
 
     public async exec(
         message: Message,
-        { member, reason }: { member: GuildMember; reason: string }
+        { member, reason }: { member: GuildMember, reason: string }
     ) {
         const clientUser = await message.guild.members.fetch(
             this.client.user.id
