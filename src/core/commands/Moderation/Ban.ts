@@ -39,6 +39,10 @@ export default class Ban extends Command {
         const clientUser = await message.guild.members.fetch(
             this.client.user.id
         );
+
+        if (member.id === message.author.id)
+            return message.util.send(":x: You can't ban yourself");
+
         if (member.bannable)
             return message.util.send(":x: This member can't be banned");
 
@@ -54,7 +58,11 @@ export default class Ban extends Command {
                         member.user.displayAvatarURL({ dynamic: true })
                     )
                     .setDescription(`Reason: ${reason}`)
+                    .setColor("BLUE")
             );
-        } catch (e) {}
+        } catch (e) {
+            this.client.logger.error(e);
+            message.util.send(`An error has occured | ${e}`);
+        }
     }
 }
