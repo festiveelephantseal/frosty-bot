@@ -5,7 +5,7 @@ import { addCoins } from "../../../lib/utils/AddCoins";
 
 export default class DailyCommand extends Command {
   public constructor() {
-    super("daily", {
+    super("work", {
       aliases: ["work", "w"],
       category: "Economy",
       description: {
