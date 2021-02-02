@@ -34,8 +34,8 @@ export default class BalanceCommand extends Command {
           `${user.username}'s balance`,
           user.displayAvatarURL({ dynamic: true })
         )
-        .setDescription(`🏦: $**${coins}**`);
-
+        .setDescription(`🏦: $**${coins}**`)
+        .setColor("BLUE");
       message.util.send(embed);
     }
   }

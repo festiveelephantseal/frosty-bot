@@ -20,8 +20,10 @@
   "dependencies": {
     "@ayanaware/logger": "^2.2.1",
     "axios": "^0.21.1",
+    "common-tags": "^1.8.0",
     "discord-akairo": "discord-akairo/discord-akairo",
     "discord.js": "discordjs/discord.js",
-    "mongoose": "^5.11.12"
+    "mongoose": "^5.11.12",
+    "ms": "^2.1.3"
   }
 }

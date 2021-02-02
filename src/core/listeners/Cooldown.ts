@@ -1,5 +1,6 @@
 import { Message, MessageEmbed } from "discord.js";
 import { Listener } from "discord-akairo";
+import ms from "ms";
 
 export default class CommandCooldown extends Listener {
   constructor() {
@@ -10,13 +11,16 @@ export default class CommandCooldown extends Listener {
     });
   }
 
-  public exec(message: Message, remaining: number): void {
-    const embed: MessageEmbed = new MessageEmbed()
+  public exec(message: Message, amount: number): void {
+    /* const embed: MessageEmbed = new MessageEmbed()
       .setTitle("Cooldown Time!")
       .setDescription(
-        `Please wait **${remaining / 1000}** seconds and try again`
+        `Please wait **${ms(amount, {
+          long: true,
+        })}** and try again`
       );
 
-    message.util.send(embed);
+    message.util.send(embed); */
+    this.client.logger.info(amount.toString());
   }
 }

@@ -27,32 +27,31 @@ export default class SetLogChannel extends Command {
 
   public async exec(message: Message, { channel }: { channel: TextChannel }) {
     const result = await LogChannel.findOne({
-      guildID: message.guild.id
-    })
+      guildID: message.guild.id,
+    });
 
     if (result) {
       await LogChannel.findOneAndRemove({
-        guildID: message.guild.id
-      })
+        guildID: message.guild.id,
+      });
 
       message.util.send(`The log channel is now set to <#${channel.id}>`);
 
       const data = new LogChannel({
         guildID: message.guild.id,
-        logChannel: channel.id
-      })
+        logChannel: channel.id,
+      });
 
-      data.save() 
+      data.save();
     } else if (!result) {
       message.util.send(`The log channel is now set to <#${channel.id}>`);
 
       const data = new LogChannel({
         guildID: message.guild.id,
-        logChannel: channel.id
-      })
+        logChannel: channel.id,
+      });
 
       data.save();
     }
-
   }
 }
