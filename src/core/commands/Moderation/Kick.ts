@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo";
 import { Message, MessageEmbed, GuildMember, TextChannel } from "discord.js";
-import LogChannelSchema from "../../../lib/schemas/LogChannelSchema";
+import LogChannelSchema from "../../../lib/models/LogChannelModel";
 
 export default class Kick extends Command {
   public constructor() {

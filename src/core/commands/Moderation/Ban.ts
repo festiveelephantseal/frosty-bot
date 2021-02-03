@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo";
 import { Message, MessageEmbed, GuildMember, TextChannel } from "discord.js";
-import LogChannelSchema from "../../../lib/schemas/LogChannelSchema";
+import LogChannelSchema from "../../../lib/models/LogChannelModel";
 
 export default class Ban extends Command {
   public constructor() {

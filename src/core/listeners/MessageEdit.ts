@@ -1,6 +1,6 @@
 import { Listener } from "discord-akairo";
 import { MessageEmbed, TextChannel } from "discord.js";
-import LogChannelSchema from "../../lib/schemas/LogChannelSchema";
+import LogChannelSchema from "../../lib/models/LogChannelModel";
 
 export default class MessageUpdateListener extends Listener {
   public constructor() {

@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo";
 import { Message, MessageEmbed } from "discord.js";
-import LogChannel from "../../../lib/schemas/LogChannelSchema";
+import LogChannel from "../../../lib/models/LogChannelModel";
 import { getGuildPrefix } from "../../../lib/utils/GetPrefix";
 
 export default class SettingsCommand extends Command {
@@ -10,6 +10,7 @@ export default class SettingsCommand extends Command {
       description: {
         content: "See the current settings for your server",
       },
+      category: "Misc",
     });
   }
 

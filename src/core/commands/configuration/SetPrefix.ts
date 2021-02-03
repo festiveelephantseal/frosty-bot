@@ -1,11 +1,12 @@
 import { Command } from "discord-akairo";
 import { Message } from "discord.js";
-import PrefixSchema from "../../../lib/schemas/PrefixSchema";
+import PrefixSchema from "../../../lib/models/PrefixModel";
 
 export default class SetPrefixCommand extends Command {
   public constructor() {
     super("setprefix", {
       aliases: ["setprefix", "changeprefix"],
+      category: "Configuration",
       description: {
         content: "Set a custom prefix for frosty in your guild!",
       },
@@ -29,18 +30,10 @@ export default class SetPrefixCommand extends Command {
     });
 
     if (result) {
-      await PrefixSchema.findOneAndRemove({
-        guildID: message.guild.id,
-      });
+      result.prefix = prefix;
+      result.save();
 
       message.util.send(`The prefix is now set to ${prefix}`);
-
-      const data = new PrefixSchema({
-        guildID: message.guild.id,
-        prefix: prefix,
-      });
-
-      data.save();
     } else if (!result) {
       message.util.send(`The prefix is now set to ${prefix}`);
 

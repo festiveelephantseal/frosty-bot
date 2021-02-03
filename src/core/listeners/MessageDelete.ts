@@ -1,6 +1,6 @@
 import { Listener } from "discord-akairo";
 import { Message, MessageEmbed, TextChannel } from "discord.js";
-import LogChannelSchema from "../../lib/schemas/LogChannelSchema";
+import LogChannelSchema from "../../lib/models/LogChannelModel";
 
 export default class MessageDeleteListener extends Listener {
   public constructor() {

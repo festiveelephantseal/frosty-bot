@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import UserSchema from "../schemas/UserSchema";
+import UserSchema from "../models/UserModel";
 
 export const getCoins = async (userID) => {
   const result = await UserSchema.findOne({

@@ -1,4 +1,4 @@
-import User from "../schemas/UserSchema";
+import User from "../models/UserModel";
 import mongoose from "mongoose";
 
 export const addCoins = async (userID: string, coins: number) => {

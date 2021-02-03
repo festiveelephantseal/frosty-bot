@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo";
 import { Message, TextChannel } from "discord.js";
-import LogChannel from "../../../lib/schemas/LogChannelSchema";
+import LogChannel from "../../../lib/models/LogChannelModel";
 
 export default class SetLogChannel extends Command {
   public constructor() {
