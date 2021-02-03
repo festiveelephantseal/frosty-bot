@@ -1,6 +1,7 @@
 import { Command } from "discord-akairo";
 import { Message, MessageEmbed } from "discord.js";
 import { stripIndents } from "common-tags";
+import { getGuildPrefix } from "../../../lib/utils/GetPrefix";
 
 export default class HelpCommand extends Command {
   public constructor() {
@@ -27,7 +28,7 @@ export default class HelpCommand extends Command {
     message: Message,
     { command }: { command: Command }
   ): Promise<Message | Message[]> {
-    const prefix = "f.";
+    const prefix = await getGuildPrefix(message.guild.id);
     if (!command) {
       const embed = new MessageEmbed().setColor("BLUE").addField(
         "Commands",
