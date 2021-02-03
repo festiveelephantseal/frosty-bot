@@ -1,6 +1,7 @@
 import { Command } from "discord-akairo";
-import { Message, MessageEmbed, GuildMember } from "discord.js";
+import { Message, MessageEmbed, GuildMember, TextChannel } from "discord.js";
 import WarnModel from "../../../lib/models/WarningModel";
+import LogChannel from "../../../lib/models/LogChannelModel";
 
 export default class WarnCommand extends Command {
   public constructor() {
@@ -58,6 +59,27 @@ export default class WarnCommand extends Command {
       });
       data.save();
       message.util.send(`**${member.user.tag}** was warned for **${reason}**`);
+
+      const res = await LogChannel.findOne({
+        guildID: message.guild.id,
+      });
+
+      if (!res) return;
+
+      const channel = this.client.channels.cache.get(
+        res.logChannel
+      ) as TextChannel;
+      channel.send(
+        new MessageEmbed()
+          .setAuthor(
+            `${member.user.username} was Warned`,
+            member.user.displayAvatarURL({ dynamic: true })
+          )
+          .setDescription(
+            `Moderator: **<@${message.author.id}>** | Reason: **${reason}**`
+          )
+          .setColor("BLUE")
+      );
     } else if (result) {
       result.warns.unshift({
         moderator: message.author.id,
@@ -67,6 +89,27 @@ export default class WarnCommand extends Command {
       result.save();
       message.util.send(
         `**${member.user.tag}** has been warned for **${reason}**`
+      );
+
+      const res = await LogChannel.findOne({
+        guildID: message.guild.id,
+      });
+
+      if (!res) return;
+
+      const channel = this.client.channels.cache.get(
+        res.logChannel
+      ) as TextChannel;
+      channel.send(
+        new MessageEmbed()
+          .setAuthor(
+            `${member.user.username} was Warned`,
+            member.user.displayAvatarURL({ dynamic: true })
+          )
+          .setDescription(
+            `Moderator: **<@${message.author.id}>** | Reason: **${reason}**`
+          )
+          .setColor("BLUE")
       );
     }
   }
