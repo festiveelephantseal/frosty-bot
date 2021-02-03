@@ -9,7 +9,7 @@ export default class WarnCommand extends Command {
       category: "Moderation",
       description: {
         content: "warn those naughty server members!",
-        usage: "@nerd reason:I don't like you",
+        usage: "@nerd I don't like you",
       },
       userPermissions: ["MANAGE_MESSAGES"],
       args: [
@@ -25,8 +25,7 @@ export default class WarnCommand extends Command {
         },
         {
           id: "reason",
-          type: "string",
-          flag: "reason:",
+          match: "rest",
           default: "No Reason Provided",
         },
       ],

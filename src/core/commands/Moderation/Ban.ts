@@ -9,7 +9,7 @@ export default class Ban extends Command {
       category: "Moderation",
       description: {
         content: "BAAAAAAAN",
-        usage: "@nerd reason:<reason>",
+        usage: "@nerd [reason]",
       },
       args: [
         {
@@ -24,8 +24,7 @@ export default class Ban extends Command {
         },
         {
           id: "reason",
-          match: "option",
-          flag: "reason:",
+          match: "rest",
           default: "No reason provided",
         },
       ],

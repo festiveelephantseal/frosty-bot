@@ -9,7 +9,7 @@ export default class Kick extends Command {
       category: "Moderation",
       description: {
         content: "get kicked",
-        usage: "@nerd reason:<reason>",
+        usage: "@nerd [reason]",
       },
       args: [
         {
@@ -25,8 +25,7 @@ export default class Kick extends Command {
 
         {
           id: "reason",
-          match: "option",
-          flag: "reason:",
+          match: "rest",
           default: "No reason provided",
         },
       ],
