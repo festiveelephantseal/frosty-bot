@@ -10,5 +10,6 @@ export default class ReadyListener extends Listener {
   }
   public exec(): void {
     this.client.logger.info(`Logged in as ${this.client.user.username}`);
+    this.client.user.setPresence({ status: "dnd" });
   }
 }

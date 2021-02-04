@@ -27,15 +27,21 @@ export default class PatCommand extends Command {
   }
 
   public exec(message: Message, { member }: { member: GuildMember }) {
-    fetch("https://some-random-api.ml/animu/pat")
-      .then((res) => res.json())
-      .then((body) => {
-        let embed = new MessageEmbed()
-          .setColor("RANDOM")
-          .setTitle(`${message.author.username} patted ${member.user.tag}`)
-          .setImage(body.link)
-          .setTimestamp(Date.now());
-        message.channel.send(embed);
-      });
+    if (member.user.id === message.author.id) return;
+
+    try {
+      fetch("https://some-random-api.ml/animu/pat")
+        .then((res) => res.json())
+        .then((body) => {
+          let embed = new MessageEmbed()
+            .setColor("RANDOM")
+            .setTitle(`${message.author.username} patted ${member.user.tag}`)
+            .setImage(body.link)
+            .setTimestamp(Date.now());
+          message.channel.send(embed);
+        });
+    } catch (e) {
+      message.util.send(`Error | ${e}`);
+    }
   }
 }

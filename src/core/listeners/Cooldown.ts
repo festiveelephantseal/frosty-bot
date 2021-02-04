@@ -11,16 +11,16 @@ export default class CommandCooldown extends Listener {
     });
   }
 
-  public exec(message: Message, amount: number): void {
-    /* const embed: MessageEmbed = new MessageEmbed()
+  public exec(message: Message, _, amount: number): void {
+    const embed: MessageEmbed = new MessageEmbed()
       .setTitle("Cooldown Time!")
+      .setColor("BLUE")
       .setDescription(
         `Please wait **${ms(amount, {
           long: true,
         })}** and try again`
       );
 
-    message.util.send(embed); */
-    this.client.logger.info(amount.toString());
+    message.util.send(embed);
   }
 }

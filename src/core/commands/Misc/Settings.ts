@@ -2,6 +2,7 @@ import { Command } from "discord-akairo";
 import { Message, MessageEmbed } from "discord.js";
 import LogChannel from "../../../lib/models/LogChannelModel";
 import { getGuildPrefix } from "../../../lib/utils/GetPrefix";
+import MuteRoleModel from "../../../lib/models/MuteRoleModel";
 
 export default class SettingsCommand extends Command {
   public constructor() {
@@ -19,6 +20,10 @@ export default class SettingsCommand extends Command {
       guildID: message.guild.id,
     });
 
+    const MuteRole = await MuteRoleModel.findOne({
+      guildID: message.guild.id,
+    });
+
     const prefix = await getGuildPrefix(message.guild.id);
 
     const embed: MessageEmbed = new MessageEmbed()
@@ -28,6 +33,10 @@ export default class SettingsCommand extends Command {
         true
       )
       .addField("Prefix", prefix, true)
+      .addField(
+        "Mute Role",
+        MuteRole ? `<@&${MuteRole.role}>` : "No Mute Role Set"
+      )
       .setColor("BLUE")
       .setAuthor(
         `Settings for ${message.guild.name}`,

@@ -12,7 +12,7 @@ export default class DailyCommand extends Command {
         content: "get some money",
       },
       channel: "guild",
-      cooldown: 14400000,
+      cooldown: 1800000,
     });
   }
 
