@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import { IUserSchema } from "../interfaces/IUserSchema";
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<IUserSchema>({
   userID: {
     type: String,
     required: true,

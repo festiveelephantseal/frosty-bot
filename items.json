@@ -1,0 +1,12 @@
+[{
+    "name": "Sharp Sword",
+    "description": "A sharp sword useful for enemies :eyes:",
+    "id": "sword",
+    "cost": "400"
+},
+{
+    "name": "Magic Wand",
+    "description": "The most magical wand...",
+    "id": "wand",
+    "cost": "1200"
+}]

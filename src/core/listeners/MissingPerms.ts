@@ -9,7 +9,15 @@ export default class MissingPermissionsEvent extends Listener {
     });
   }
 
-  public async exec(message: Message, missing: any) {
-    message.channel.send(`You are missing the \`${missing}\` permission`);
+  public async exec(message: Message, type: "client" | "user", missing: any) {
+    switch (type) {
+      case "client":
+        return message.util.send(`I am missing the \`${missing}\` permission`);
+
+      case "user":
+        return message.util.send(
+          `You are missing the \`${missing}\ permission`
+        );
+    }
   }
 }
