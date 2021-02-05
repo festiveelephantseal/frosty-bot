@@ -29,6 +29,7 @@ export default class MuteCommand extends Command {
         },
       ],
       userPermissions: ["MANAGE_MESSAGES"],
+      channel: "guild"
     });
   }
 

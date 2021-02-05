@@ -21,6 +21,7 @@ export default class HelpCommand extends Command {
           type: "commandAlias",
         },
       ],
+      channel: "guild"
     });
   }
 

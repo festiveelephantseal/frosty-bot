@@ -30,6 +30,7 @@ export default class WarnCommand extends Command {
           default: "No Reason Provided",
         },
       ],
+      channel: "guild",
     });
   }
   public async exec(

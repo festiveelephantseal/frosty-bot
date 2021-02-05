@@ -21,7 +21,6 @@ export default class MemeCommand extends Command {
       if (res.status !== 200) {
         message.channel.send(`Status code did not return 200 | ${res.status}`);
       } else {
-        this.client.logger.info(res.data.url);
         const embed: MessageEmbed = new MessageEmbed()
           .setTitle(res.data.title)
           .setColor("BLUE")

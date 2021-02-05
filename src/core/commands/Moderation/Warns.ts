@@ -18,6 +18,7 @@ export default class WarnsCommand extends Command {
           },
         },
       ],
+      channel: "guild",
     });
   }
   public async exec(message: Message, { member }: { member: GuildMember }) {
