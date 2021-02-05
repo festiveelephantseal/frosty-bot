@@ -1,6 +1,16 @@
 # Frosty
 The repository for the frosty discord bot.
 
+# Features
+- Custom prefix per server
+- Set a log channel for your server
+- Global currency system
+- Powerful moderation system
+- Message logging
+- Image manipulation commands
+- Music, Coming soon!
+
+
 # Contributing
 Interested in contributing?
 
