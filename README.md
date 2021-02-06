@@ -1,6 +1,6 @@
 # Frosty
 The repository for the frosty discord bot.
-[Invite Link](https://frosty.skynode.me)
+[Invite Link](https://discord.com/oauth2/authorize?client_id=688085554868518941&permissions=10262&scope=bot)
 
 # Features
 - Custom prefix per server
