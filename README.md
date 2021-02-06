@@ -1,5 +1,6 @@
 # Frosty
 The repository for the frosty discord bot.
+[Invite Link](/https://frosty.skynode.me)
 
 # Features
 - Custom prefix per server
