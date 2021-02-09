@@ -1,5 +1,6 @@
 import { Command } from "discord-akairo";
-import { Message, GuildMember } from "discord.js";
+import { Message, MessageEmbed, GuildMember, TextChannel } from "discord.js";
+import LogChannelModel from "../../../lib/models/LogChannelModel";
 import MuteRoleModel from "../../../lib/models/MuteRoleModel";
 
 export default class MuteCommand extends Command {
@@ -42,6 +43,10 @@ export default class MuteCommand extends Command {
       guildID: message.guild.id,
     });
 
+    const logChannel = await LogChannelModel.findOne({
+      guildID: message.guild.id,
+    });
+
     if (member.roles.highest.position >= message.member.roles.highest.position)
       return message.util.send(
         "You cannot mute this person as they have the same role as you or a higher one"
@@ -54,6 +59,19 @@ export default class MuteCommand extends Command {
     } else {
       member.roles.add(result.role);
       message.util.send(`**${member.user.tag}** was muted for **${reason}**`);
+
+      if (logChannel) {
+        const channel = this.client.channels.cache.get(
+          logChannel.logChannel
+        ) as TextChannel;
+        channel.send(
+          new MessageEmbed()
+            .setAuthor(member.user.displayAvatarURL({ dynamic: true }))
+            .setDescription(
+              `**${member.user.username}** was muted by **${message.author.username}** for **${reason}**`
+            )
+        );
+      }
     }
   }
 }

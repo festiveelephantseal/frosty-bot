@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@ayanaware/logger": "^2.2.1",
+    "@top-gg/sdk": "^3.0.7",
     "axios": "^0.21.1",
     "common-tags": "^1.8.0",
     "discord-akairo": "discord-akairo/discord-akairo",

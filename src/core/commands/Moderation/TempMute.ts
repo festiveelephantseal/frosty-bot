@@ -1,6 +1,7 @@
 import { Command } from "discord-akairo";
-import { Message, GuildMember } from "discord.js";
+import { Message, GuildMember, TextChannel, MessageEmbed } from "discord.js";
 import MuteRoleModel from "../../../lib/models/MuteRoleModel";
+import LogChannelModel from "../../../lib/models/LogChannelModel";
 import ms from "ms";
 
 export default class TempMuteCommand extends Command {
@@ -50,6 +51,10 @@ export default class TempMuteCommand extends Command {
       guildID: message.guild.id,
     });
 
+    const logChannel = await LogChannelModel.findOne({
+      guildID: message.guild.id,
+    });
+
     if (member.roles.highest.position >= message.member.roles.highest.position)
       return message.util.send(
         "You cannot mute this person as they have the same role as you or a higher one"
@@ -69,12 +74,20 @@ export default class TempMuteCommand extends Command {
 
       setTimeout(() => {
         member.roles.remove(result.role);
-        try {
-          member.send(
-            `You have been unmuted in ${message.guild.name} as your temp mute has expired`
+
+        if (logChannel) {
+          const channel = this.client.channels.cache.get(
+            logChannel.logChannel
+          ) as TextChannel;
+          channel.send(
+            new MessageEmbed()
+              .setAuthor(member.user.displayAvatarURL({ dynamic: true }))
+              .setDescription(
+                `${member.user.username} was unmuted as their temp mute expired!`
+              )
           );
-        } catch (err) {
-          this.client.logger.error(err);
+        } else {
+          return;
         }
       }, time);
     }

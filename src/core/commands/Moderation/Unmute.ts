@@ -1,5 +1,6 @@
 import { Command } from "discord-akairo";
-import { Message, GuildMember } from "discord.js";
+import { Message, GuildMember, MessageEmbed, TextChannel } from "discord.js";
+import LogChannelModel from "../../../lib/models/LogChannelModel";
 import MuteRoleModel from "../../../lib/models/MuteRoleModel";
 
 export default class MuteCommand extends Command {
@@ -34,6 +35,10 @@ export default class MuteCommand extends Command {
       guildID: message.guild.id,
     });
 
+    const logChannel = await LogChannelModel.findOne({
+      guildID: message.guild.id,
+    });
+
     if (!result) {
       return message.util.send("There is no mute role set yet");
     }
@@ -43,5 +48,18 @@ export default class MuteCommand extends Command {
 
     member.roles.remove(result.role);
     message.util.send(`**${member.user.tag}** was unmuted`);
+
+    if (logChannel) {
+      const channel = this.client.channels.cache.get(
+        logChannel.logChannel
+      ) as TextChannel;
+      channel.send(
+        new MessageEmbed()
+          .setAuthor(member.user.displayAvatarURL({ dynamic: true }))
+          .setDescription(
+            `**${member.user.username}** was unmuted by **${message.author.username}**`
+          )
+      );
+    }
   }
 }
