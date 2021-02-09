@@ -21,7 +21,7 @@ export default class SetPrefixCommand extends Command {
           },
         },
       ],
-      userPermissions: ["MANAGE_MESSAGES"],
+      userPermissions: ["MANAGE_GUILD"],
     });
   }
   public async exec(message: Message, { prefix }: { prefix: string }) {

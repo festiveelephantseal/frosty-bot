@@ -28,8 +28,9 @@ export default class MuteCommand extends Command {
           default: "No Reason Provided",
         },
       ],
-      userPermissions: ["MANAGE_MESSAGES"],
-      channel: "guild"
+      userPermissions: ["MUTE_MEMBERS"],
+      clientPermissions: ["MANAGE_ROLES"],
+      channel: "guild",
     });
   }
 

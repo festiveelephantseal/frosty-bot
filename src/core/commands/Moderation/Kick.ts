@@ -30,6 +30,7 @@ export default class Kick extends Command {
         },
       ],
       channel: "guild",
+      userPermissions: ["KICK_MEMBERS"],
     });
   }
 

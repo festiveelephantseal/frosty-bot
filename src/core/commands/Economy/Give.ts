@@ -30,6 +30,8 @@ export default class GiveCommand extends Command {
           },
         },
       ],
+      cooldown: 10000,
+      ratelimit: 1,
     });
   }
   public async exec(
@@ -37,6 +39,13 @@ export default class GiveCommand extends Command {
     { member, amount }: { member: GuildMember; amount: number }
   ) {
     const authorCoins = await getCoins(message.author.id);
+
+    if (member.user.bot)
+      return message.util.send("You cannot give a bot money smh");
+
+    if (member.user.id === message.author.id)
+      return message.util.send("You cannot give money to yourself");
+
     if (amount > authorCoins) {
       return message.util.send("You cannot give more money than you have!");
     } else {

@@ -21,6 +21,7 @@ export default class SetMuteRoleCommand extends Command {
           },
         },
       ],
+      userPermissions: ["MANAGE_GUILD"],
     });
   }
   public async exec(message: Message, { role }: { role: Role }) {

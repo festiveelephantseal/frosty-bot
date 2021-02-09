@@ -22,6 +22,7 @@ export default class SetLogChannel extends Command {
           },
         },
       ],
+      userPermissions: ["MANAGE_GUILD"],
     });
   }
 
