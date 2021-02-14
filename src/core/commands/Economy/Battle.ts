@@ -3,6 +3,7 @@ import { Message } from "discord.js";
 import Inventory from "../../../lib/models/InventoryModel";
 import { subtractCoins } from "../../../lib/utils/SubtractCoins";
 import { addCoins } from "../../../lib/utils/AddCoins";
+import { getCoins } from "../../../lib/utils/GetCoins";
 
 export default class BattleCommand extends Command {
   public constructor() {
@@ -18,6 +19,10 @@ export default class BattleCommand extends Command {
     const inv = await Inventory.findOne({
       userID: message.author.id,
     });
+
+    const coins = await getCoins(message.author.id);
+
+    if (coins < 2000) return message.util.send("You're too poor to battle");
 
     if (!inv)
       return message.util.send(

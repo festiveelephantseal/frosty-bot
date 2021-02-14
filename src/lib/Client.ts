@@ -1,5 +1,5 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
-import { Message, Collection } from "discord.js";
+import { Message, Collection, Intents } from "discord.js";
 import { join } from "path";
 import { owners } from "../../config";
 import { BotOptions } from "./interfaces/BotOptions";
