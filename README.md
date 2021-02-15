@@ -16,3 +16,7 @@ The repository for the frosty discord bot.
 Interested in contributing?
 
 - Read [contributing guide lines](/CONTRIBUTING.md)
+
+# Other
+The API that frosty uses for some of the image manipulation commands
+[Link to repo](https://github.com/nerdthatnoonelikes/nerds-api)
