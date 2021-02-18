@@ -1,7 +1,6 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
-import { Message, Collection, Intents } from "discord.js";
+import { Message, Collection } from "discord.js";
 import { join } from "path";
-import { owners } from "../../config";
 import { BotOptions } from "./interfaces/BotOptions";
 import Logger from "@ayanaware/logger";
 import { getGuildPrefix } from "./utils/GetPrefix";
@@ -13,7 +12,8 @@ export default class BotClient extends AkairoClient {
 
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: join(__dirname, "..", "core", "commands"),
-    prefix: async (msg: Message) => await getGuildPrefix(msg.guild.id),
+    prefix: async (msg: Message) =>
+      msg.guild ? await getGuildPrefix(msg.guild.id) : "f.",
     allowMention: true,
     handleEdits: true,
     commandUtil: true,
