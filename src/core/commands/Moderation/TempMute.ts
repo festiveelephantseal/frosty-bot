@@ -73,6 +73,7 @@ export default class TempMuteCommand extends Command {
       );
 
       setTimeout(() => {
+        if (!member.roles.cache.some((role) => role.id === result.role)) return;
         member.roles.remove(result.role);
 
         if (logChannel) {
@@ -81,10 +82,14 @@ export default class TempMuteCommand extends Command {
           ) as TextChannel;
           channel.send(
             new MessageEmbed()
-              .setAuthor(member.user.displayAvatarURL({ dynamic: true }))
+              .setAuthor(
+                `${member.user.username} was unmuted!`,
+                member.user.displayAvatarURL({ dynamic: true })
+              )
               .setDescription(
                 `${member.user.username} was unmuted as their temp mute expired!`
               )
+              .setColor("BLUE")
           );
         } else {
           return;

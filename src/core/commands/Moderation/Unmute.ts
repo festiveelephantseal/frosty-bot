@@ -55,10 +55,14 @@ export default class MuteCommand extends Command {
       ) as TextChannel;
       channel.send(
         new MessageEmbed()
-          .setAuthor(member.user.displayAvatarURL({ dynamic: true }))
+          .setAuthor(
+            `${member.user.username} was unmuted!`,
+            member.user.displayAvatarURL({ dynamic: true })
+          )
           .setDescription(
             `**${member.user.username}** was unmuted by **${message.author.username}**`
           )
+          .setColor("BLUE")
       );
     }
   }

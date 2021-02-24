@@ -32,13 +32,14 @@ export default class HugCommand extends Command {
       fetch("https://some-random-api.ml/animu/hug")
         .then((res) => res.json())
         .then((body) => {
-          let embed = new MessageEmbed()
+          const embed = new MessageEmbed()
             .setColor("RANDOM")
             .setTitle(`${message.author.username} hugged ${member.user.tag}`)
             .setImage(body.link)
             .setTimestamp(Date.now());
           message.channel.send(embed);
-        });
+        })
+        .catch((e) => message.util.send(`Error | ${e}`));
     } catch (e) {
       message.util.send(`Error | ${e}`);
     }

@@ -1,5 +1,5 @@
 import { Listener } from "discord-akairo";
-import { MessageEmbed, TextChannel } from "discord.js";
+import { Message, MessageEmbed, TextChannel } from "discord.js";
 import LogChannelSchema from "../../lib/models/LogChannelModel";
 
 export default class MessageUpdateListener extends Listener {
@@ -10,7 +10,7 @@ export default class MessageUpdateListener extends Listener {
     });
   }
 
-  public async exec(oldMessage, newMessage) {
+  public async exec(oldMessage: Message, newMessage: Message) {
     const result = await LogChannelSchema.findOne({
       guildID: oldMessage.guild.id,
     });
@@ -22,6 +22,7 @@ export default class MessageUpdateListener extends Listener {
     if (result) {
       const embed: MessageEmbed = new MessageEmbed()
         .setTitle("Message Edited")
+        .setURL(newMessage.url)
         .setColor("BLUE")
         .setDescription(
           `${oldMessage.author.tag} edited a message in <#${oldMessage.channel.id}>`

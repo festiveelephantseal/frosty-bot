@@ -39,7 +39,8 @@ export default class KissCommand extends Command {
             .setImage(body.image)
             .setTimestamp(Date.now());
           message.channel.send(embed);
-        });
+        })
+        .catch((e) => message.util.send(`Error | ${e}`));
     } catch (e) {
       message.util.send(`Error | ${e}`);
     }

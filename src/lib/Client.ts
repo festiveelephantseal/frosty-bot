@@ -1,5 +1,5 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
-import { Message, Collection } from "discord.js";
+import { Message, Collection, TextChannel, MessageEmbed } from "discord.js";
 import { join } from "path";
 import { BotOptions } from "./interfaces/BotOptions";
 import Logger from "@ayanaware/logger";
@@ -39,6 +39,18 @@ export default class BotClient extends AkairoClient {
   public listenerHandler: ListenerHandler = new ListenerHandler(this, {
     directory: join(__dirname, "..", "core", "listeners"),
   });
+
+  public sendError = (message: string) => {
+    const channel = this.channels.cache.get(
+      "697596229206540329"
+    ) as TextChannel;
+
+    return channel.send(
+      new MessageEmbed()
+        .setTitle("New Error")
+        .setDescription(`Error: ${message}`)
+    );
+  };
 
   public constructor(config: BotOptions) {
     super({ ownerID: config.owners });

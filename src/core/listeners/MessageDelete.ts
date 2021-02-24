@@ -23,9 +23,7 @@ export default class MessageDeleteListener extends Listener {
       const embed: MessageEmbed = new MessageEmbed()
         .setTitle("Message Deleted")
         .setColor("BLUE")
-        .setDescription(
-          `${message.author.tag} deleted a message in <#${message.channel.id}>`
-        )
+        .setDescription(`Message deleted in <#${message.channel.id}>`)
         .addField("Content", message.content, true);
 
       const channel = this.client.channels.cache.get(

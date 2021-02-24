@@ -1,6 +1,6 @@
 import Logger from "@ayanaware/logger";
 import { BotOptions } from "../interfaces/BotOptions";
-import { Collection } from "discord.js";
+import { Collection, MessageEmbed } from "discord.js";
 import { Item } from "../interfaces/IItem";
 
 declare module "discord-akairo" {
@@ -10,5 +10,6 @@ declare module "discord-akairo" {
     logger: Logger;
     config: BotOptions;
     items: Collection<string, Item>;
+    sendError: Function;
   }
 }
