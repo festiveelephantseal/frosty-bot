@@ -1,4 +1,4 @@
-import { Listener } from "discord-akairo";
+import { Listener, Command } from "discord-akairo";
 import { Message } from "discord.js";
 
 export default class MissingPermissionsEvent extends Listener {
@@ -9,15 +9,20 @@ export default class MissingPermissionsEvent extends Listener {
     });
   }
 
-  public async exec(message: Message, type: "client" | "user", missing: any) {
-    switch (type) {
-      case "client":
-        return message.util.send(`I am missing the \`${missing}\` permission`);
+  public async exec(
+    message: Message,
+    command: Command,
+    type: string,
+    missing: any
+  ) {
+    if (type === "client") {
+      return message.util.send(`I am missing the \`${missing}\` permission/s`);
+    }
 
-      case "user":
-        return message.util.send(
-          `You are missing the \`${missing}\ permission`
-        );
+    if (type === "user") {
+      return message.util.send(
+        `You are missing the \`${missing}\` permission/s`
+      );
     }
   }
 }

@@ -13,6 +13,9 @@ export default class ListCustomCommands extends Command {
   public async exec(message: Message) {
     const result = await CustomCommand.find({ guildID: message.guild.id });
 
+    if (!result)
+      return message.util.send("There are no tags setup for this server");
+
     const embed = new MessageEmbed()
       .setAuthor(
         `Tags for ${message.guild.name}`,

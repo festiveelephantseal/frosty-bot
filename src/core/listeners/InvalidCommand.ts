@@ -19,6 +19,7 @@ export default class InvalidCommand extends Listener {
         guildID: message.guild.id,
         command: message.content.slice(prefix.length).trim(),
       });
+      if (!result) return;
       message.util.send(result.content);
     }
   }

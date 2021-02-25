@@ -27,7 +27,7 @@ export default class CreateCustomCommand extends Command {
           match: "rest",
           type: Argument.validate(
             "string",
-            (m, p, str: string) => str.length < 40
+            (m, p, str: string) => str.length < 2000
           ),
           prompt: {
             start: (msg: Message) => `${msg.author} please provide content!`,

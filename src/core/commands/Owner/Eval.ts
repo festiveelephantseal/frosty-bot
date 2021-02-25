@@ -8,7 +8,6 @@ export default class EvalCommand extends Command {
       aliases: ["eval"],
       category: "Owner",
       description: { content: "evaluate some javascript" },
-      ownerOnly: true,
       args: [
         {
           id: "code",
@@ -19,6 +18,7 @@ export default class EvalCommand extends Command {
           },
         },
       ],
+      ownerOnly: true,
     });
   }
   public async exec(message: Message, { code }: { code: string }) {
