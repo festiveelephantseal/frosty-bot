@@ -1,5 +1,11 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
-import { Message, Collection, TextChannel, MessageEmbed } from "discord.js";
+import {
+  Message,
+  Collection,
+  TextChannel,
+  MessageEmbed,
+  Intents,
+} from "discord.js";
 import { join } from "path";
 import { BotOptions } from "./interfaces/BotOptions";
 import Logger from "@ayanaware/logger";
@@ -53,7 +59,10 @@ export default class BotClient extends AkairoClient {
   };
 
   public constructor(config: BotOptions) {
-    super({ ownerID: config.owners });
+    super({
+      ownerID: config.owners,
+      intents: [Intents.NON_PRIVILEGED],
+    });
 
     this.config = config;
   }

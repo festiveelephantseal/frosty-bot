@@ -23,6 +23,11 @@ export default class GuildCreateListener extends Listener {
         .setAuthor(`Joined ${guild.name}`, guild.iconURL({ dynamic: true }))
     );
 
+    this.client.user.setActivity({
+      type: "WATCHING",
+      name: `${this.client.guilds.cache.size} guilds | http://frosty.skynode.me`,
+    });
+
     api
       .postStats({
         serverCount: this.client.guilds.cache.size,

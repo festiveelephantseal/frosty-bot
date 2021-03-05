@@ -12,6 +12,10 @@ export default class ReadyListener extends Listener {
   public exec(): void {
     this.client.logger.info(`Logged in as ${this.client.user.username}`);
     this.client.user.setPresence({ status: "dnd" });
+    this.client.user.setActivity({
+      type: "WATCHING",
+      name: `${this.client.guilds.cache.size} guilds | http://frosty.skynode.me`,
+    });
 
     items.forEach((item) => {
       this.client.items.set(item.name, item);

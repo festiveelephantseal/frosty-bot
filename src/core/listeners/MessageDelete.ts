@@ -20,11 +20,33 @@ export default class MessageDeleteListener extends Listener {
     if (message.author.bot) return;
 
     if (result) {
+      const attachments = message.attachments.size
+        ? message.attachments.map((attachment) => attachment.proxyURL)
+        : null;
       const embed: MessageEmbed = new MessageEmbed()
         .setTitle("Message Deleted")
         .setColor("BLUE")
-        .setDescription(`Message deleted in <#${message.channel.id}>`)
-        .addField("Content", message.content, true);
+        .setAuthor(
+          message.author.tag,
+          message.author.displayAvatarURL({ dynamic: true })
+        )
+        .setDescription([
+          `**》Message ID:** ${message.id}`,
+          `**》Channel:** ${message.channel}`,
+          `**》Author:** ${message.member.displayName}`,
+          `${
+            attachments ? `**》Attachments:** ${attachments.join("\n")}` : ""
+          }`,
+        ]);
+
+      if (message.content.length && message.content.length < 1024) {
+        embed.addField("Message Content", `》${message.content}`);
+      } else {
+        embed.addField(
+          "Message Content",
+          "》Message content length exceeds 1024"
+        );
+      }
 
       const channel = this.client.channels.cache.get(
         result.logChannel
