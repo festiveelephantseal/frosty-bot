@@ -19,6 +19,8 @@ export default class MessageUpdateListener extends Listener {
 
     if (oldMessage.author.bot) return;
 
+    if (!newMessage.content.length) return; 
+
     if (result) {
       const embed: MessageEmbed = new MessageEmbed()
         .setTitle("Message Edited")
