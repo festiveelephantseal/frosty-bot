@@ -1,6 +1,3 @@
-# Repo moved
-I have moved the repo to my own [public gitea instance](http://gitea.skynode.me:3000/nerd/frosty-bot)
-
 # Frosty
 The repository for the frosty discord bot.
 [Invite Link](https://discord.com/oauth2/authorize?client_id=688085554868518941&permissions=10262&scope=bot)
