@@ -7,4 +7,4 @@ const WarningSchema = new Schema<IWarningSchema>({
   warns: { required: true, type: Array },
 });
 
-export default model("Warning", WarningSchema);
+export default model<IWarningSchema>("Warning", WarningSchema);

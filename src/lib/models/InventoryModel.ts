@@ -6,4 +6,4 @@ const InventorySchema = new Schema<InventorySchema>({
   items: { required: true, type: Array },
 });
 
-export default model("Inventory", InventorySchema);
+export default model<InventorySchema>("Inventory", InventorySchema);

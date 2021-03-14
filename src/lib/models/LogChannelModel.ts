@@ -12,4 +12,4 @@ const LogChannel = new Schema<ISchema>({
   },
 });
 
-export default model("LogChannel", LogChannel);
+export default model<ISchema>("LogChannel", LogChannel);

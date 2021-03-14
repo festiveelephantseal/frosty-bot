@@ -6,4 +6,4 @@ const MuteSchema = new Schema<IMuteSchema>({
   role: { required: true, type: String },
 });
 
-export default model("Mute", MuteSchema);
+export default model<IMuteSchema>("Mute", MuteSchema);

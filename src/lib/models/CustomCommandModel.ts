@@ -7,4 +7,7 @@ const CustomCommandSchema = new Schema<ICustomCommandSchema>({
   content: { required: true, type: String },
 });
 
-export default model("CustomCommand", CustomCommandSchema);
+export default model<ICustomCommandSchema>(
+  "CustomCommand",
+  CustomCommandSchema
+);

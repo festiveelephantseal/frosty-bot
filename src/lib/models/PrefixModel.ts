@@ -11,4 +11,4 @@ const PrefixSchema = new Schema<IPrefixSchema>({
   },
 });
 
-export default model("Prefix", PrefixSchema);
+export default model<IPrefixSchema>("Prefix", PrefixSchema);
