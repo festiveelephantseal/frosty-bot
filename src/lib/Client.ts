@@ -61,7 +61,7 @@ export default class BotClient extends AkairoClient {
   public constructor(config: BotOptions) {
     super({
       ownerID: config.owners,
-      intents: [Intents.NON_PRIVILEGED],
+      intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILD_MEMBERS],
     });
 
     this.config = config;
