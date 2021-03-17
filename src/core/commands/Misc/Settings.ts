@@ -3,6 +3,7 @@ import { Message, MessageEmbed } from "discord.js";
 import LogChannel from "../../../lib/models/LogChannelModel";
 import { getGuildPrefix } from "../../../lib/utils/GetPrefix";
 import MuteRoleModel from "../../../lib/models/MuteRoleModel";
+import AutoRole from "../../../lib/models/AutoRole";
 
 export default class SettingsCommand extends Command {
   public constructor() {
@@ -24,6 +25,10 @@ export default class SettingsCommand extends Command {
       guildID: message.guild.id,
     });
 
+    const Autorole = await AutoRole.findOne({
+      guildID: message.guild.id,
+    });
+
     const prefix = await getGuildPrefix(message.guild.id);
 
     const embed: MessageEmbed = new MessageEmbed()
@@ -36,6 +41,10 @@ export default class SettingsCommand extends Command {
       .addField(
         "Mute Role",
         MuteRole ? `<@&${MuteRole.role}>` : "No Mute Role Set"
+      )
+      .addField(
+        Autorole.roles.length > 1 ? "Auto Roles" : "Auto Role",
+        Autorole.roles.map((r) => `<@&${r}>`)
       )
       .setColor("BLUE")
       .setAuthor(
