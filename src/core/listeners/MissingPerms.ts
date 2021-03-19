@@ -15,8 +15,11 @@ export default class MissingPermissionsEvent extends Listener {
     type: string,
     missing: any
   ) {
+    const cM = message.guild.members.fetch(this.client.user.id);
     if (type === "client") {
-      return message.util.send(`I am missing the \`${missing}\` permission/s`);
+      (await cM).permissions.has("SEND_MESSAGES")
+        ? message.util.send(`I am missing the \`${missing}\` permission/s`)
+        : this.client.sendError(`Missing perms in ${message.guild.name}`);
     }
 
     if (type === "user") {

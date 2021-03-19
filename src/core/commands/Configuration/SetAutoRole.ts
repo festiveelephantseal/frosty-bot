@@ -37,8 +37,11 @@ export default class SetAutoRoleCommand extends Command {
     message: Message,
     { action, role }: { action: "add" | "remove"; role: Role }
   ) {
+    const cM = await message.guild.members.fetch(this.client.user.id);
     if (action === "add") {
       const result = await AutoRole.findOne({ guildID: message.guild.id });
+      if (role.position >= cM.roles.highest.position)
+        return message.util.send("This role is higher than mine");
       if (result) {
         if (result.roles.includes(role.id))
           return message.util.send(

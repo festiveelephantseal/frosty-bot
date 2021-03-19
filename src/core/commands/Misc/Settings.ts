@@ -43,8 +43,8 @@ export default class SettingsCommand extends Command {
         MuteRole ? `<@&${MuteRole.role}>` : "No Mute Role Set"
       )
       .addField(
-        Autorole.roles.length > 1 ? "Auto Roles" : "Auto Role",
-        Autorole.roles.map((r) => `<@&${r}>`)
+        "Auto roles",
+        Autorole ? Autorole.roles.map((r) => `<@&${r}>`) : "No Auto Roles set"
       )
       .setColor("BLUE")
       .setAuthor(
