@@ -14,6 +14,7 @@ export default class SetAutoRoleCommand extends Command {
       args: [
         {
           id: "action",
+          type: "add" || "remove",
           prompt: {
             start: (msg: Message) => `${msg.author} please provide an action`,
             retry: (msg: Message) => `${msg.author} that is not a valid action`,
