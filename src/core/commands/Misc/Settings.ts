@@ -1,9 +1,9 @@
 import { Command } from "discord-akairo";
-import { Message, MessageEmbed } from "discord.js";
+import { MessageEmbed } from "discord.js";
 import LogChannel from "../../../lib/models/LogChannelModel";
-import { getGuildPrefix } from "../../../lib/utils/GetPrefix";
 import MuteRoleModel from "../../../lib/models/MuteRoleModel";
 import AutoRole from "../../../lib/models/AutoRole";
+import { FrostyMessage } from "../../../lib/interfaces/IMessage";
 
 export default class SettingsCommand extends Command {
   public constructor() {
@@ -16,7 +16,7 @@ export default class SettingsCommand extends Command {
     });
   }
 
-  public async exec(message: Message) {
+  public async exec(message: FrostyMessage) {
     const logchannel = await LogChannel.findOne({
       guildID: message.guild.id,
     });
@@ -29,7 +29,7 @@ export default class SettingsCommand extends Command {
       guildID: message.guild.id,
     });
 
-    const prefix = await getGuildPrefix(message.guild.id);
+    const prefix = await message.guild.getPrefix();
 
     const embed: MessageEmbed = new MessageEmbed()
       .addField(

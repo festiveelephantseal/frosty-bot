@@ -12,6 +12,9 @@ import Logger from "@ayanaware/logger";
 import { getGuildPrefix } from "./utils/GetPrefix";
 import { Item } from "../lib/interfaces/IItem";
 
+// Import Structures
+import "./structures/Guild";
+
 export default class BotClient extends AkairoClient {
   public logger: Logger = Logger.get("Bot");
   public items: Collection<string, Item> = new Collection();
