@@ -1,0 +1,28 @@
+{
+  "name": "frosty-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nerdthatnoonelikes/frosty-bot.git"
+  },
+  "author": "nerdthatnoonelikes <kenrag24@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "discord.js-light": "^3.5.11"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "typescript": "^4.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/nerdthatnoonelikes/frosty-bot/issues"
+  },
+  "homepage": "https://github.com/nerdthatnoonelikes/frosty-bot#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "description": ""
+}
